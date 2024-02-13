@@ -7,20 +7,43 @@
     <script src="commonJs.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">SWP <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="inflation.html">Inflation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="investmentBased.html">Investment Based</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3 py-5">
             <p>Let's see how long your savings will last.</p>
             <form class="form-floating py-1">
-                <input type="number" class="form-control" id="corpus" value="100000">
+                <input type="number" class="form-control" id="corpus" value="17000000">
                 <label for="corpus">Corpus</label>
             </form>
             <form class="form-floating py-1">
-                <input type="number" class="form-control" id="swp" value="1000">
+                <input type="number" class="form-control" id="swp" value="35000">
                 <label for="swp">SWP</label>
             </form>
             <form class="form-floating py-1">
-                <input type="number" class="form-control" id="swpYears" value="5">
+                <input type="number" class="form-control" id="swpYears" value="7">
                 <label for="swpYears">SWP Years</label>
             </form>
             <form class="form-floating py-1">
@@ -28,7 +51,7 @@
                 <label for="debtReturn">Returns from debt</label>
             </form>
             <form class="form-floating py-1">
-                <input type="number" class="form-control" id="equityReturn" value="12">
+                <input type="number" class="form-control" id="equityReturn" value="10">
                 <label for="equityReturn">Returns from equity</label>
             </form>
             <form class="form-floating py-1">
@@ -153,6 +176,7 @@
             let months = month % 12;
             innerHtml += "In " + years + " years & " + months + " months your asset will be " + formatForIndia(corpus);
             innerHtml += "</br>"
+            innerHtml += "This is equal to " + formatForIndia(corpus / Math.pow(1 + inflation, years)) + " when you retired.";
         } else {
             month--;
             let years = Math.floor(month / 12);
